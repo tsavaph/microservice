@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: currency-conversion-service
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    enabled: true
+
+server:
+  port: 8100
