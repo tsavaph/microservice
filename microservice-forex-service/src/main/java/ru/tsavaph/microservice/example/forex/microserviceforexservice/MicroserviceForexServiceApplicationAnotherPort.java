@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class MicroserviceForexServiceApplication {
+public class MicroserviceForexServiceApplicationAnotherPort {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroserviceForexServiceApplication.class, args);
+		SpringApplication.run(MicroserviceForexServiceApplicationAnotherPort.class, args);
 	}
 
 }

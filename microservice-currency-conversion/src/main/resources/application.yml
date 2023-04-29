@@ -7,5 +7,11 @@ springdoc:
     use-root-path: true
     enabled: true
 
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+
 server:
   port: 8100

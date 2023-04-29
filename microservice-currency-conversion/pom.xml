@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.2</spring-cloud.version>
+		<org.netflix-ribbon.version>2.2.10.RELEASE</org.netflix-ribbon.version>
+		<org.springframework.cloud.netflix-eureka-client>4.0.1</org.springframework.cloud.netflix-eureka-client>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,6 +27,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>${org.springframework.cloud.netflix-eureka-client}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
