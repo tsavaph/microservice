@@ -2,14 +2,14 @@ spring:
   application:
     name: forex-service
   jpa:
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/forex
-    username: admin
-    password: admin
+    url:  ${POSTGRESQL_URL:jdbc:postgresql://localhost:5432/forex}
+    username: ${POSTGRESQL_USER:admin}
+    password: ${POSTGRESQL_PASSWORD:admin}
 
 springdoc:
   swagger-ui:
@@ -17,9 +17,9 @@ springdoc:
     enabled: true
 
 server:
-  port: 8000
+  port: ${SERVER_PORT:8000}
 
 eureka:
   client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

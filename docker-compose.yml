@@ -1,0 +1,74 @@
+version: '3.9'
+
+services:
+
+  server:
+    build:
+      context: microservice-eureka-naming-server/.
+    container_name: server
+    ports:
+      - "8761:8761"
+
+  currency:
+    build:
+      context: microservice-currency-conversion/.
+    container_name: currency
+    ports:
+      - "8100:8100"
+    links:
+      - server
+    environment:
+      EUREKA_URL: http://server:8761/eureka
+
+  forex0:
+    build:
+      context: microservice-forex-service/.
+    container_name: forex0
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    links:
+      - postgres
+    environment:
+      SERVER_PORT: 8000
+      EUREKA_URL: http://server:8761/eureka
+      POSTGRESQL_URL: jdbc:postgresql://postgres:5432/forex
+      POSTGRESQL_USER: admin
+      POSTGRESQL_PASSWORD: admin
+
+  forex1:
+    build:
+      context: microservice-forex-service/.
+    container_name: forex1
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    links:
+      - postgres
+    environment:
+      SERVER_PORT: 8001
+      EUREKA_URL: http://server:8761/eureka
+      POSTGRESQL_URL: jdbc:postgresql://postgres:5432/forex
+      POSTGRESQL_USER: admin
+      POSTGRESQL_PASSWORD: admin
+
+  postgres:
+    container_name: postgres
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "forex"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d forex" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped

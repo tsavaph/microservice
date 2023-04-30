@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:13-alpine:///forex
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+eureka:
+  client:
+    enabled: false

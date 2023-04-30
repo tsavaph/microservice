@@ -3,7 +3,7 @@ package ru.tsavaph.microservice.example.currencyconversion.microservicecurrencyc
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class MicroserviceCurrencyConversionApplicationTests {
 
 	@Test
