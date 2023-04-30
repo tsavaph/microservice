@@ -8,6 +8,10 @@ import ru.tsavaph.microservice.example.currencyconversion.microservicecurrencyco
 @FeignClient(name = "forex-service")
 public interface CurrencyExchangeServiceProxy {
 
-    @GetMapping("/currency-exchange/from/{from}/to/{to}")
-    CurrencyConversionBean retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
+    @GetMapping("/currency-exchange/from/{from}/to/{to}/year/{year}/month/{month}")
+    CurrencyConversionBean retrieveExchangeValue(
+            @PathVariable("from") String from,
+            @PathVariable("to") String to,
+            @PathVariable("year") Integer year,
+            @PathVariable("month") Integer month);
 }

@@ -21,11 +21,13 @@ public class CurrencyConversionController {
         this.currencyConversionService = currencyConversionService;
     }
 
-    @GetMapping("/from/{from}/to/{to}/quantity/{quantity}")
+    @GetMapping("/from/{from}/to/{to}/year/{year}/month/{month}/quantity/{quantity}")
     public CurrencyConversionBean convertCurrency(@PathVariable String from,
                                                   @PathVariable String to,
+                                                  @PathVariable Integer year,
+                                                  @PathVariable Integer month,
                                                   @PathVariable BigDecimal quantity) {
 
-        return currencyConversionService.makeCurrencyConversionBean(from, to, quantity);
+        return currencyConversionService.makeCurrencyConversionBean(from, to, year, month, quantity);
     }
 }

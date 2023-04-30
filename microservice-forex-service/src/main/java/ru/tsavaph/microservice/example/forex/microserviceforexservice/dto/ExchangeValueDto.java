@@ -10,9 +10,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExchangeValueDto {
-    private Long id;
     private String from;
     private String to;
+    private Integer year;
+
+    private Integer month;
     private BigDecimal conversionMultiple;
-    private Integer port;
 }

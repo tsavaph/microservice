@@ -6,5 +6,5 @@ import ru.tsavaph.microservice.example.forex.microserviceforexservice.entity.Exc
 
 @Repository
 public interface ExchangeValueRepository extends JpaRepository<ExchangeValue, Long> {
-    ExchangeValue findByFromAndTo(String from, String to);
+    ExchangeValue findByFromAndToAndYearAndMonth(String from, String to, Integer year, Integer month);
 }

@@ -10,11 +10,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurrencyConversionBean {
-    private Long id;
     private String from;
     private String to;
+    private Integer year;
+    private Integer month;
     private BigDecimal conversionMultiple;
     private BigDecimal quantity;
     private BigDecimal totalCalculatedAmount;
-    private int port;
 }

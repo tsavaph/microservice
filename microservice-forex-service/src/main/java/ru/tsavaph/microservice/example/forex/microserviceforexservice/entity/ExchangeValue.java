@@ -22,9 +22,12 @@ public class ExchangeValue {
     @Column(name="currency_to")
     private String to;
 
+    @Column(name = "year")
+    private Integer year;
+
+    @Column(name = "month")
+    private Integer month;
+
     @Column(name="conversion_multiple")
     private BigDecimal conversionMultiple;
-
-    @Column(name = "port")
-    private Integer port;
 }

@@ -15,8 +15,8 @@ public class ForexService {
         this.repository = repository;
     }
 
-    public ExchangeValue findExchangeValueByFromAndTo(String from, String to) {
+    public ExchangeValue findExchangeValueByFromAndToAndYearAndMonth(String from, String to, Integer year, Integer month) {
 
-        return repository.findByFromAndTo(from, to);
+        return repository.findByFromAndToAndYearAndMonth(from, to, year, month);
     }
 }
