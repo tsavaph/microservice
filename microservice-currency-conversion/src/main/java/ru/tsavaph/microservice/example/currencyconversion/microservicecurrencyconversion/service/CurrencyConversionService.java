@@ -19,14 +19,27 @@ public class CurrencyConversionService {
         this.proxy = proxy;
     }
 
-    public CurrencyConversionBean makeCurrencyConversionBean(String from, String to, Integer year, Integer month, BigDecimal quantity) {
+    public CurrencyConversionBean makeAvgCurrencyConversionBean(String from, String to, Integer year, Integer month, BigDecimal quantity) {
 
-        CurrencyConversionBean response = proxy.retrieveExchangeValue(from, to, year, month);
+        CurrencyConversionBean response = proxy.retrieveAvgExchangeValue(from, to, year, month);
 
         log.info("{}", response);
 
-        return new CurrencyConversionBean(
-                from, to, year, month, response.getConversionMultiple(),
-                quantity, quantity.multiply(response.getConversionMultiple()));
+        response.setQuantity(quantity);
+        response.setTotalCalculatedAmount(quantity.multiply(response.getConversionMultiple()));
+
+        return response;
+    }
+
+    public CurrencyConversionBean makeCurrencyConversionBean(String from, String to, Integer year, Integer month, Integer day, BigDecimal quantity) {
+
+        CurrencyConversionBean response = proxy.retrieveExchangeValue(from, to, year, month, day);
+
+        log.info("{}", response);
+
+        response.setQuantity(quantity);
+        response.setTotalCalculatedAmount(quantity.multiply(response.getConversionMultiple()));
+
+        return response;
     }
 }

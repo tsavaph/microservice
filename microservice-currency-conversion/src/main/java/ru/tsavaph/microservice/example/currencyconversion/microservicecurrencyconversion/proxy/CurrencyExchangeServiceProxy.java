@@ -9,9 +9,17 @@ import ru.tsavaph.microservice.example.currencyconversion.microservicecurrencyco
 public interface CurrencyExchangeServiceProxy {
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}/year/{year}/month/{month}")
-    CurrencyConversionBean retrieveExchangeValue(
+    CurrencyConversionBean retrieveAvgExchangeValue(
             @PathVariable("from") String from,
             @PathVariable("to") String to,
             @PathVariable("year") Integer year,
             @PathVariable("month") Integer month);
+
+    @GetMapping("/currency-exchange/from/{from}/to/{to}/year/{year}/month/{month}/day/{day}")
+    CurrencyConversionBean retrieveExchangeValue(
+            @PathVariable("from") String from,
+            @PathVariable("to") String to,
+            @PathVariable("year") Integer year,
+            @PathVariable("month") Integer month,
+            @PathVariable("day") Integer day);
 }
