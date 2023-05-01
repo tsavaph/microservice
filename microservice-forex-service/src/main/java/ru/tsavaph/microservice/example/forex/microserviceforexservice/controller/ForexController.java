@@ -9,6 +9,9 @@ import ru.tsavaph.microservice.example.forex.microserviceforexservice.dto.Exchan
 import ru.tsavaph.microservice.example.forex.microserviceforexservice.mapper.ExchangeValueMapper;
 import ru.tsavaph.microservice.example.forex.microserviceforexservice.service.ForexService;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @RestController
 @RequestMapping(path = "/currency-exchange")
 public class ForexController {
@@ -29,7 +32,9 @@ public class ForexController {
             @PathVariable Integer year,
             @PathVariable Integer month) {
 
-        return mapper.toDto(service.findExchangeValueByFromAndToAndYearAndMonth(from, to, year, month));
+        BigDecimal conversion = service.findAngConversionByFromToYearAndMonth(from, to, year, month);
+
+        return new ExchangeValueDto(from, to, year, month, conversion.setScale(4, RoundingMode.HALF_UP));
     }
 
 

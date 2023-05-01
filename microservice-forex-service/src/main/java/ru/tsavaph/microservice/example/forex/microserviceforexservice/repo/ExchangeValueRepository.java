@@ -1,10 +1,15 @@
 package ru.tsavaph.microservice.example.forex.microserviceforexservice.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.tsavaph.microservice.example.forex.microserviceforexservice.entity.ExchangeValue;
 
+import java.math.BigDecimal;
+
 @Repository
 public interface ExchangeValueRepository extends JpaRepository<ExchangeValue, Long> {
-    ExchangeValue findByFromAndToAndYearAndMonth(String from, String to, Integer year, Integer month);
+
+    @Query("SELECT AVG(e.conversionMultiple) FROM ExchangeValue e WHERE e.from = :from AND e.to = :to AND e.year = :year AND e.month = :month")
+    BigDecimal findAngConversionByFromToYearMonth(String from, String to, Integer year, Integer month);
 }

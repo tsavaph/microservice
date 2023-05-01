@@ -2,8 +2,9 @@ package ru.tsavaph.microservice.example.forex.microserviceforexservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.tsavaph.microservice.example.forex.microserviceforexservice.entity.ExchangeValue;
 import ru.tsavaph.microservice.example.forex.microserviceforexservice.repo.ExchangeValueRepository;
+
+import java.math.BigDecimal;
 
 @Service
 public class ForexService {
@@ -15,8 +16,10 @@ public class ForexService {
         this.repository = repository;
     }
 
-    public ExchangeValue findExchangeValueByFromAndToAndYearAndMonth(String from, String to, Integer year, Integer month) {
+    public BigDecimal findAngConversionByFromToYearAndMonth(String from, String to, Integer year, Integer month) {
 
-        return repository.findByFromAndToAndYearAndMonth(from, to, year, month);
+        BigDecimal exchangeValue = repository.findAngConversionByFromToYearMonth(from, to, year, month);
+
+        return exchangeValue;
     }
 }
