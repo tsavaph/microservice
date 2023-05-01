@@ -1,5 +1,5 @@
 # Historical Currency Microservice Application
-###  Services for getting currency data according to data. Currently database contains EUR-RUB, USD-RUB, GBP-RUB data.
+###  Services for getting currency data by date. Currently database contains EUR-RUB, USD-RUB, GBP-RUB data.
 Stack: Spring Boot, Spring Cloud (Feign, Eureka), Spring MVC, Spring Data,
 Validation, Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger
 
