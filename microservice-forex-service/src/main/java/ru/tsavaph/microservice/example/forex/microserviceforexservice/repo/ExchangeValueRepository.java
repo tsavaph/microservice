@@ -11,5 +11,7 @@ import java.math.BigDecimal;
 public interface ExchangeValueRepository extends JpaRepository<ExchangeValue, Long> {
 
     @Query("SELECT AVG(e.conversionMultiple) FROM ExchangeValue e WHERE e.from = :from AND e.to = :to AND e.year = :year AND e.month = :month")
-    BigDecimal findAngConversionByFromToYearMonth(String from, String to, Integer year, Integer month);
+    BigDecimal findAvgConversionByFromToYearMonth(String from, String to, Integer year, Integer month);
+
+    ExchangeValue findByFromAndToAndYearAndMonthAndDay(String from, String to, Integer year, Integer month, Integer day);
 }
