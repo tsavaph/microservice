@@ -7,10 +7,10 @@ Validation, Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger
 ### 1) forex-service
 Currency conversion service
 
-| Address                                                    | Method | Description                                            |
-|:-----------------------------------------------------------|:-------|:-------------------------------------------------------|
-| `/from/{from}/to/{to}/year/{year}/month/{month}/day/{day}` | GET    | Get currency conversion data by exact date             |
-| `/from/{from}/to/{to}/year/{year}/month/{month}`           | GET    | Get average currency conversion data by year and month |
+| Address                                                           | Method | Description                                            |
+|:------------------------------------------------------------------|:-------|:-------------------------------------------------------|
+| `/from/{from}/to/{to}/year/{year}/`<br/>`month/{month}/day/{day}` | GET    | Get currency conversion data by exact date             |
+| `/from/{from}/to/{to}/year/{year}/`<br/>`month/{month}`           | GET    | Get average currency conversion data by year and month |
 
 ### 2) netflix-eureka-naming-server
 Server for connecting services all together and balancing load
@@ -18,10 +18,10 @@ Server for connecting services all together and balancing load
 ### 3) currency-conversion-service (uses many forex-services)
 Service for calculating the conversion amount 
 
-| Address                                                                         | Method | Description                                                      |
-|:--------------------------------------------------------------------------------|:-------|:-----------------------------------------------------------------|
-| `/from/{from}/to/{to}/year/{year}/month/{month}/day/{day}/quantity/{quantity} ` | GET    | Get conversion amount calculation data by exact date             |
-| `/from/{from}/to/{to}/year/{year}/month/{month}/quantity/{quantity}`            | GET    | Get average conversion amount calculation data by year and month |
+| Address                                                                                | Method | Description                                                      |
+|:---------------------------------------------------------------------------------------|:-------|:-----------------------------------------------------------------|
+| `/from/{from}/to/{to}/year/{year}/`<br/>`month/{month}/day/{day}/quantity/{quantity} ` | GET    | Get conversion amount calculation data by exact date             |
+| `/from/{from}/to/{to}/year/{year}/`<br/>`month/{month}/quantity/{quantity}`            | GET    | Get average conversion amount calculation data by year and month |
 
 ## Building
 #### For each service run `mvn package`
