@@ -13,9 +13,9 @@ Currency conversion service
 | `/from/{from}/to/{to}/year/{year}/month/{month}`           | GET    | Get average currency conversion data by year and month |
 
 ### 2) netflix-eureka-naming-server
-Server for connecting services all together
+Server for connecting services all together and balancing load
 
-### 3) currency-conversion-service (uses forex-service)
+### 3) currency-conversion-service (uses many forex-services)
 Service for calculating the conversion amount 
 
 | Address                                                                         | Method | Description                                                      |
