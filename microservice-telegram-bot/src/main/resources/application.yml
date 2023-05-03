@@ -1,1 +1,15 @@
+spring:
+  application:
+    name: telegram-bot-service
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+
+server:
+  port: 8200
+
+bot:
+  username: ${BOT_USERNAME:@TsavaphCurrencyHistoryBot}
+  token: ${BOT_TOKEN:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
