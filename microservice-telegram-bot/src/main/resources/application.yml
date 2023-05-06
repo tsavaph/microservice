@@ -12,4 +12,4 @@ server:
 
 bot:
   username: ${BOT_USERNAME:@TsavaphCurrencyHistoryBot}
-  token: ${BOT_TOKEN:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+  token: ${BOT_TOKEN:6172654016:AAFJNTegLPl6ldTo7j710IRuGMyQb87EdhQ}
