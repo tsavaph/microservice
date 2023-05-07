@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.tsavaph.microservice.example.telegram.microservicetelegrambot.bot.service.SendBotMessageServiceImpl;
@@ -27,10 +26,9 @@ public class CurrencyHistoryTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        SendMessage sendMessage =  sendMessageService.getSendMessage(update);
 
         try {
-            execute(sendMessage);
+            execute(sendMessageService.getSendMessage(update));
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }

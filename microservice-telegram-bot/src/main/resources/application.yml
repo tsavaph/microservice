@@ -8,8 +8,8 @@ eureka:
       defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
 
 server:
-  port: 8200
+  port: ${SERVER_PORT:8200}
 
 bot:
   username: ${BOT_USERNAME:@TsavaphCurrencyHistoryBot}
-  token: ${BOT_TOKEN:6172654016:AAFJNTegLPl6ldTo7j710IRuGMyQb87EdhQ}
+  token: ${BOT_TOKEN:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
