@@ -9,6 +9,17 @@ services:
     ports:
       - "8761:8761"
 
+  bot:
+    build:
+      context: microservice-telegram-bot/.
+    container_name: bot
+    ports:
+      - "8200:8200"
+    environment:
+      SERVER_PORT: 8200
+      EUREKA_URL: http://server:8761/eureka
+      BOT_USERNAME: "@TsavaphCurrencyHistoryBot"
+      BOT_TOKEN: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   currency:
     build:
       context: microservice-currency-conversion/.
