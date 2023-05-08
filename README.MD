@@ -38,10 +38,10 @@ Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger, telegrambot
 
 ### Ordinary
 1) #### create PostgreSQL database 'forex'
-2) #### type `java -jar target/microservice-eureka-naming-server-0.0.1-SNAPSHOT.jar`
-3) #### type `java -jar target/microservice-forex-service-0.0.1-SNAPSHOT.jar`
-4) #### type `java -jar target/microservice-currency-conversion-0.0.1-SNAPSHOT.jar`
-5) #### type `java -jar target/microservice-telegram-bot-0.0.1-SNAPSHOT.jar`
+2) #### type `java -jar microservice-eureka-naming-server/target/microservice-eureka-naming-server-0.0.1-SNAPSHOT.jar`
+3) #### type `java -jar microservice-forex-service/target/microservice-forex-service-0.0.1-SNAPSHOT.jar`
+4) #### type `java -jar microservice-currency-conversion/target/microservice-currency-conversion-0.0.1-SNAPSHOT.jar`
+5) #### type `java -jar -Dbot.username=bot_name -Dbot.token=bot_token microservice-telegram-bot/target/microservice-telegram-bot-0.0.1-SNAPSHOT.jar`
 
 ## Usage
 1) ### forex-service
