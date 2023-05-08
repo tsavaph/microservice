@@ -27,7 +27,10 @@ Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger, telegrambot
     Service for getting currency conversion values via Telegram Bot.
 
 ## Building
-#### For each service run `mvn package`
+* ### Windows
+  #### run `start build.bat bot_name bot_token`
+* ### Linux
+  #### run `bash build.sh bot_name bot_token`
 
 ## Launching
 ### Docker
