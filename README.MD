@@ -57,6 +57,5 @@ Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger, telegrambot
    2) add more currencies data from foreign central banks to database
 2) #### telegram-bot-service
    1) complete command messages
-   2) handle errors if type is incorrect for `/currency` command
 3) #### all services
    1) add tests  
