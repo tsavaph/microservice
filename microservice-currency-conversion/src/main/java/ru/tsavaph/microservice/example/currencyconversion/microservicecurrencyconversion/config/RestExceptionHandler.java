@@ -4,6 +4,8 @@ import feign.FeignException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,9 +20,10 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(value = FeignException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ExceptionResponse notFound(final FeignException ex) {
-        return new ExceptionResponse(List.of(ex.getMessage()));
+    public ResponseEntity<String> notFound(final FeignException ex) {
+        return new ResponseEntity<>(
+                ex.getMessage(),
+                HttpStatusCode.valueOf(ex.status()));
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
