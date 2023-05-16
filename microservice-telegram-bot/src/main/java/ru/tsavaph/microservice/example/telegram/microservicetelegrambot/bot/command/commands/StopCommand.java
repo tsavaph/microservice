@@ -4,7 +4,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class StopCommand implements Command {
-    public final static String STOP_MESSAGE = "Привет. Stop";
+    public final static String STOP_MESSAGE = "If you want to stop the bot, click on bot's avatar and select \"Stop\\Block Bot\".";
 
 
     @Override

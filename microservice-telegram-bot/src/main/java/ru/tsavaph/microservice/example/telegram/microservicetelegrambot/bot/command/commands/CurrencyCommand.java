@@ -7,9 +7,20 @@ import ru.tsavaph.microservice.example.telegram.microservicetelegrambot.bean.Cur
 import ru.tsavaph.microservice.example.telegram.microservicetelegrambot.proxy.CurrencyCalculatorServiceProxy;
 import java.math.BigDecimal;
 
+import static ru.tsavaph.microservice.example.telegram.microservicetelegrambot.bot.command.commands.CommandName.CURRENCY;
+import static ru.tsavaph.microservice.example.telegram.microservicetelegrambot.bot.command.commands.CommandName.HELP;
+
 public class CurrencyCommand implements Command {
     private final CurrencyCalculatorServiceProxy proxy;
-    public static final String INCORRECT_CURRENCY_COMMAND = "incorrect currency command";
+    public static final String INCORRECT_CURRENCY_COMMAND = String.format(
+            """
+            Incorrect currency command. Correct are:
+                %s from to year month day amount;
+                %s from to year month amount.
+            Type %s to see examples.
+            """,
+            CURRENCY.getCommandName(), CURRENCY.getCommandName(), HELP.getCommandName()
+    );
 
     public CurrencyCommand(CurrencyCalculatorServiceProxy proxy) {
         this.proxy = proxy;

@@ -53,9 +53,9 @@ Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger, telegrambot
 
 ## TODO
 1) #### forex-service
-   1) add more currencies data from Russian Central Bank to database
-   2) add more currencies data from foreign central banks to database
+   1) add more currency data from Russian Central Bank to database
+   2) add more currency data from foreign central banks to database
 2) #### telegram-bot-service
-   1) complete command messages
+   1) add validation for correct parsing numbers for currency command
 3) #### all services
    1) add tests  
