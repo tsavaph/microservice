@@ -43,7 +43,7 @@ public class ForexController {
 
         BigDecimal conversion = service.findAvgConversionByFromToYearAndMonth(from, to, year, month);
 
-        return new ExchangeValueDto(from, to, year, month, conversion.setScale(4, RoundingMode.HALF_UP));
+        return new ExchangeValueDto(from, to, month, year, conversion.setScale(4, RoundingMode.HALF_UP));
     }
 
     @GetMapping("/from/{from}/to/{to}/year/{year}/month/{month}/day/{day}")
