@@ -1,5 +1,5 @@
-# Historical Currency Microservice Application
-###  Services for getting currency data by date. Currently, database contains EUR-RUB, USD-RUB, GBP-RUB data.
+# Microservices of Historical Currency Converter
+###  Services for historical currency conversion by date with endpoint in Telegram bot. Currently, database contains EUR-RUB, USD-RUB, GBP-RUB data.
 Stack: Spring Boot, Spring Cloud (Feign, Eureka), Spring MVC, Spring Data, Validation,
 Lombok, MapStruct, Maven, REST, PostgreSQL, Docker, Flyway, Swagger, telegrambots
 
