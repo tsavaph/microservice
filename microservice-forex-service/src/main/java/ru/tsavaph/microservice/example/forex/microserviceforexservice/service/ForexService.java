@@ -9,6 +9,7 @@ import ru.tsavaph.microservice.example.forex.microserviceforexservice.exception.
 import ru.tsavaph.microservice.example.forex.microserviceforexservice.repo.ExchangeValueRepository;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
@@ -27,16 +28,23 @@ public class ForexService {
         BigDecimal avgConversion = repository.findAvgConversionByFromToYearMonth(from, to, year, month);
 
         if (avgConversion == null) {
-            throw new NotFoundException(String.format(
-                    "There no information for from = %s, to = %s, year = %d, month = %d",
-                    from, to, year, month
-            ));
+            BigDecimal replyValue = repository.findAvgConversionByFromToYearMonth(to, from, year, month);
+            if (replyValue == null) {
+                throw new NotFoundException(String.format(
+                        "There no information for from = %s, to = %s, year = %d, month = %d",
+                        from, to, year, month
+                ));
+            }
+            avgConversion = BigDecimal.ONE.divide(
+                    replyValue,
+                    MathContext.DECIMAL128
+            );
         }
 
         return avgConversion;
     }
 
-    @Transactional
+
     public ExchangeValue findConversionByFromToYearAndMonthAndDay(String from, String to, Integer year, Integer month, Integer day) {
 
         checkDate(year, month, day);
@@ -44,10 +52,22 @@ public class ForexService {
         ExchangeValue exchangeValue = repository.findByFromAndToAndYearAndMonthAndDay(from, to, year, month, day);
 
         if (exchangeValue == null) {
-            throw new NotFoundException(String.format(
-                    "There no information for from = %s, to = %s, year = %d, month = %d, day = %d",
-                    from, to, year, month, day
-            ));
+            ExchangeValue replyValue = repository.findByFromAndToAndYearAndMonthAndDay(to, from, year, month, day);
+            if (replyValue == null) {
+                throw new NotFoundException(String.format(
+                        "There no information for from = %s, to = %s, year = %d, month = %d, day = %d",
+                        from, to, year, month, day
+                ));
+            }
+            BigDecimal conversion = BigDecimal.ONE.divide(
+                    replyValue.getConversionMultiple(),
+                    MathContext.DECIMAL128
+            );
+
+            replyValue.setConversionMultiple(conversion);
+            replyValue.setFrom(from);
+            replyValue.setTo(to);
+            return replyValue;
         }
 
         return exchangeValue;
